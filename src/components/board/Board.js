@@ -1,10 +1,11 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import Timer                                     from '../timer/Timer';
+import Timer from '../timer/Timer';
 import './styles.scss';
-import OutPutText                                from './Text';
-import InputText                                 from './InputText';
-import {Loader}                                  from '../../commons/Loader';
-import {withAppContainer}                        from '../../withAppContainer';
+import OutPutText from './Text';
+import InputText from './InputText';
+import {Loader} from '../../commons/Loader';
+import {withAppContainer} from '../../withAppContainer';
+import Stats from "./Stats";
 
 const Board = ({appContainer}) => {
 
@@ -47,6 +48,33 @@ const Board = ({appContainer}) => {
         }
     }, [finishTime]);
 
+    /* useEffect(() => {
+
+         if (stats.length > 0) {
+             const statsProvider = appContainer.getStatsProvider()
+             Promise.resolve().then(async () => {
+                 const userStats = await statsProvider.save(stats)
+                 setStats(prev => [...prev, `You can see your stats by ${userStats.uri} url`])
+             })
+         }
+     }, [stats])
+ */
+
+    const reset = async () => {
+        setLoading(true);
+        const texts = await appContainer.textProvider.getText();
+        setText(texts);
+        setTextMatchingStrategy(matchingStrategyFactory.create(texts));
+        setTimerStarted(false)
+        setDisabled(false)
+        setProgress(0)
+        setErrorText('')
+        setInputText('')
+        setStats([])
+        setFinishTime(null)
+        setLoading(false);
+    }
+
 
     const onInputTextChange = (e) => {
 
@@ -57,15 +85,16 @@ const Board = ({appContainer}) => {
     };
 
 
-    const generateReport = () => {
+    const generateReport = async () => {
         const analysers = appContainer.getAnalysers();
 
         const results = [];
+        const time = finishTime === 0 ? timeToComplete : finishTime;
 
         analysers.forEach((analyser) => {
-            results.push(analyser.analyse(text, progress, inputText, finishTime));
+            results.push(analyser.analyse(text, progress, inputText, time));
         });
-        console.log(results);
+
         setStats(results);
     };
 
@@ -77,17 +106,21 @@ const Board = ({appContainer}) => {
 
 
     return (
-        <Loader loading={loading}>
-            <div className={'board'}>
-                Welcome to TypeRacer
-                <Timer time={timeToComplete} start={isTimerStarted} onFinish={onTimerFinish}/>
+        <div className={'board'}>
+            Welcome to TypeRacer
+            <Stats stats={stats}/>
+            {stats.length > 0 && <button onClick={reset}>Play again</button>}
+            <Timer time={timeToComplete} start={isTimerStarted} onFinish={onTimerFinish}/>
+            <Loader loading={loading}>
                 <div className={errorText ? 'textError' : ''}>{errorText}</div>
                 <div className={'texts'}>
                     <OutPutText text={text} progress={progress}/>
                     <InputText text={inputText} onChange={onInputTextChange} disabled={disabled}/>
                 </div>
-            </div>
-        </Loader>
+
+
+            </Loader>
+        </div>
     );
 };
 

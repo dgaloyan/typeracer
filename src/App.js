@@ -1,28 +1,31 @@
-import React                   from 'react';
-import axios                   from 'axios';
+import React from 'react';
+import axios from 'axios';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link, Redirect,
-}                              from 'react-router-dom';
-import Board                   from './components/board/Board';
-import TextProvider            from './app/TextProvider';
-import AppContainer            from './app/AppContainer';
-import {AppContainerCtx}       from './withAppContainer';
-import PercentageAnalyser      from './app/PercentageAnalyser';
-import WPMAnalyser             from './app/WPMAnalyser';
+} from 'react-router-dom';
+import Board from './components/board/Board';
+import TextProvider from './app/TextProvider';
+import AppContainer from './app/AppContainer';
+import {AppContainerCtx} from './withAppContainer';
+import PercentageAnalyser from './app/PercentageAnalyser';
+import WPMAnalyser from './app/WPMAnalyser';
 import MatchingStrategyFactory from './app/MatchingStrategyFactory';
+import StatsRepository from "./app/StatsRepository";
 
-const TIME_TO_COMPLETE = 3000;
+const TIME_TO_COMPLETE = 1000;
 
 function App() {
 
     const textProvider = new TextProvider(axios);
+    const statsProvider = new StatsRepository(axios);
     const appContainer = new AppContainer(
         textProvider,
         new MatchingStrategyFactory(),
         [new PercentageAnalyser(), new WPMAnalyser()],
+        statsProvider,
         TIME_TO_COMPLETE
     );
 
