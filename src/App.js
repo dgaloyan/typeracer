@@ -1,19 +1,14 @@
-import React from 'react';
-import axios from 'axios';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link, Redirect,
-} from 'react-router-dom';
-import Board from './components/board/Board';
-import TextProvider from './app/TextProvider';
-import AppContainer from './app/AppContainer';
-import {AppContainerCtx} from './withAppContainer';
-import PercentageAnalyser from './app/PercentageAnalyser';
-import WPMAnalyser from './app/WPMAnalyser';
-import MatchingStrategyFactory from './app/MatchingStrategyFactory';
-import StatsRepository from "./app/StatsRepository";
+import React                                                     from 'react';
+import axios                                                     from 'axios';
+import {BrowserRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
+import Board                                                     from './components/board/Board';
+import TextProvider                                              from './app/TextProvider';
+import AppContainer                                              from './app/AppContainer';
+import {AppContainerCtx}                                         from './withAppContainer';
+import PercentageAnalyser                                        from './app/PercentageAnalyser';
+import WPMAnalyser                                               from './app/WPMAnalyser';
+import MatchingStrategyFactory                                   from './app/MatchingStrategyFactory';
+import StatsRepository                                           from './app/StatsRepository';
 
 const TIME_TO_COMPLETE = 1000;
 
@@ -26,7 +21,7 @@ function App() {
         new MatchingStrategyFactory(),
         [new PercentageAnalyser(), new WPMAnalyser()],
         statsProvider,
-        TIME_TO_COMPLETE
+        TIME_TO_COMPLETE,
     );
 
     return (

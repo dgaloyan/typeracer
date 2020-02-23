@@ -2,7 +2,7 @@ class AppContainer {
     textProvider;
     matchingStrategyFactory;
     analysers;
-    statsProvider
+    statsProvider;
     timeToComplete;
 
     constructor(textProvider, matchingStrategyFactory, analysers, statsProvider, timeToComplete) {
@@ -25,8 +25,8 @@ class AppContainer {
         return this.analysers;
     }
 
-    getStatsProvider(){
-        return this.statsProvider
+    getStatsProvider() {
+        return this.statsProvider;
     }
 
     getTimeToComplete() {

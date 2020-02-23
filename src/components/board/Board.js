@@ -1,11 +1,11 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import Timer from '../timer/Timer';
+import Timer                                     from '../timer/Timer';
 import './styles.scss';
-import OutPutText from './Text';
-import InputText from './InputText';
-import {Loader} from '../../commons/Loader';
-import {withAppContainer} from '../../withAppContainer';
-import Stats from "./Stats";
+import OutPutText                                from './Text';
+import InputText                                 from './InputText';
+import {Loader}                                  from '../../commons/Loader';
+import {withAppContainer}                        from '../../withAppContainer';
+import Stats                                     from './Stats';
 
 const Board = ({appContainer}) => {
 
@@ -65,15 +65,15 @@ const Board = ({appContainer}) => {
         const texts = await appContainer.textProvider.getText();
         setText(texts);
         setTextMatchingStrategy(matchingStrategyFactory.create(texts));
-        setTimerStarted(false)
-        setDisabled(false)
-        setProgress(0)
-        setErrorText('')
-        setInputText('')
-        setStats([])
-        setFinishTime(null)
+        setTimerStarted(false);
+        setDisabled(false);
+        setProgress(0);
+        setErrorText('');
+        setInputText('');
+        setStats([]);
+        setFinishTime(null);
         setLoading(false);
-    }
+    };
 
 
     const onInputTextChange = (e) => {

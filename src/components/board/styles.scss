@@ -7,18 +7,19 @@
     grid-template-columns: repeat(2, 1fr);
 
     div, textarea {
-      border : 1px solid grey;
+      border: 1px solid grey;
       padding: 8px;
       resize: none;
     }
   }
+
   .textMatch {
     background-color: green;
     color: white;
   }
 
   .textError {
-    width:fit-content;
+    width: fit-content;
     max-width: 88%;
     margin: 0 auto;
     background-color: red;
@@ -30,6 +31,6 @@
   }
 
   .stats {
-    margin : 8px 0;
+    margin: 8px 0;
   }
 }

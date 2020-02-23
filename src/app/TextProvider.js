@@ -8,7 +8,7 @@ class TextProvider {
 
     async getText() {
         const text = await this.httpClient.get('https://baconipsum.com/api/?type=meat-and-filler?paras=2');
-        return  text.data.join('');
+        return text.data.join('');
     }
 }
 

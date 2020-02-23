@@ -1,5 +1,5 @@
 export const formatTime = (millis) => {
-    const seconds = Math.floor( millis / 1000);
+    const seconds = Math.floor(millis / 1000);
 
     const h = Math.floor(seconds / 60 / 60);
     const m = Math.floor(seconds / 60) - (h * 60);
