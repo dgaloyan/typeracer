@@ -1,7 +1,9 @@
-export const formatTime = (timeStamp) => {
-    const hours = Math.floor(timeStamp / 60 / 60);
-    const minutes = Math.floor(timeStamp / 60) - (hours * 60);
-    const seconds = timeStamp % 60;
+export const formatTime = (millis) => {
+    const seconds = Math.floor( millis / 1000);
 
-    return ('0' + hours).substr(-2) + ':' + ('0' + minutes).substr(-2) + ':' + ('0' + seconds).substr(-2);
+    const h = Math.floor(seconds / 60 / 60);
+    const m = Math.floor(seconds / 60) - (h * 60);
+    const s = seconds % 60;
+
+    return ('0' + h).substr(-2) + ':' + ('0' + m).substr(-2) + ':' + ('0' + s).substr(-2);
 };

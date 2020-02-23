@@ -1,4 +1,31 @@
 .board {
-  max-width: 480px;
+  max-width: 800px;
   margin: 0 auto;
+
+  .texts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    div, textarea {
+      border : 1px solid grey;
+      padding: 8px;
+      resize: none;
+    }
+  }
+  .textMatch {
+    background-color: green;
+    color: white;
+  }
+
+  .textError {
+    width:fit-content;
+    max-width: 88%;
+    margin: 0 auto;
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+    word-wrap: break-word;
+  }
 }

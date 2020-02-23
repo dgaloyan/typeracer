@@ -1,43 +1,40 @@
-import React, {useEffect, useState, useRef, useCallback} from 'react';
-import {formatTime}                                      from './formatTime';
+import React, {useEffect, useState, useRef} from 'react';
+import {formatTime}                         from './formatTime';
 import './styles.scss';
 
-const Timer = ({time, onFinish }) => {
+const Timer = ({time, onFinish, start}) => {
 
-    const [start, toggleStart] = useState(false);
     const [countdown, setCountdown] = useState(formatTime(time));
     const intervalId = useRef(0);
     const timer = useRef(time);
 
-    const toggleTimer = useCallback(() => {
+    const startTimer = () => {
 
         intervalId.current = setInterval(() => {
-            setCountdown(formatTime(--timer.current));
+            timer.current -= 1000;
+            setCountdown(formatTime(timer.current));
 
             if (timer.current === 0) {
                 clearInterval(intervalId.current);
                 setCountdown(formatTime(timer.current));
-                onFinish && onFinish()
+                onFinish(timer.current);
             }
 
         }, 1000);
-    }, [setCountdown, onFinish]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    };
 
     useEffect(() => {
 
         if (start) {
-            toggleTimer();
-        } else {
-            clearInterval(intervalId.current);
-            onFinish && onFinish()
+            startTimer();
         }
-
-    }, [start, toggleTimer, onFinish]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [start]);
 
     return (
         <div className={'timer'}>
             <span>{countdown}</span>
-            <button onClick={() => toggleStart(!start)}>{start ? 'Stop' : 'Start'}</button>
         </div>
     );
 };
