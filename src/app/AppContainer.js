@@ -1,37 +1,43 @@
 class AppContainer {
-    textProvider;
-    matchingStrategyFactory;
-    analysers;
-    statsProvider;
-    timeToComplete;
+    textProvider
+    matchingStrategyFactory
+    analysers
+    statsRepository
+    userRepository
+    timeToComplete
 
-    constructor(textProvider, matchingStrategyFactory, analysers, statsProvider, timeToComplete) {
-        this.textProvider = textProvider;
-        this.matchingStrategyFactory = matchingStrategyFactory;
-        this.analysers = analysers;
-        this.statsProvider = statsProvider;
-        this.timeToComplete = timeToComplete;
+    constructor(textProvider, matchingStrategyFactory, analysers, statsRepository, userRepository, timeToComplete) {
+        this.textProvider            = textProvider
+        this.matchingStrategyFactory = matchingStrategyFactory
+        this.analysers               = analysers
+        this.statsRepository         = statsRepository
+        this.userRepository          = userRepository
+        this.timeToComplete          = timeToComplete
     }
 
     getTextProvider() {
-        return this.textProvider;
+        return this.textProvider
     }
 
     getMatchingStrategyFactory() {
-        return this.matchingStrategyFactory;
+        return this.matchingStrategyFactory
     }
 
     getAnalysers() {
-        return this.analysers;
+        return this.analysers
     }
 
-    getStatsProvider() {
-        return this.statsProvider;
+    getStatsRepository() {
+        return this.statsRepository
+    }
+
+    getUserRepository() {
+        return this.userRepository
     }
 
     getTimeToComplete() {
-        return this.timeToComplete;
+        return this.timeToComplete
     }
 }
 
-export default AppContainer;
+export default AppContainer

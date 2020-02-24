@@ -1,10 +1,10 @@
-import React, {createContext, useContext} from 'react';
+import React, {createContext, useContext} from 'react'
 
-export const AppContainerCtx = createContext({});
+export const AppContainerCtx = createContext({})
 
 export const withAppContainer = (Component) => {
 
     return (props) => {
-        return <Component {...props} {...useContext(AppContainerCtx)}/>;
-    };
-};
+        return <Component {...props} {...useContext(AppContainerCtx)}/>
+    }
+}
