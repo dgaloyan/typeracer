@@ -26,17 +26,22 @@ const Board = ({appContainer}) => {
 
     useEffect(() => {
         Promise.resolve().then(async () => {
-            const texts = await appContainer.textProvider.getText()
+            const texts = await appContainer.getTextProvider().getText()
             setText(texts)
             setLoading(false)
             setTextMatchingStrategy(matchingStrategyFactory.create(texts))
         })
-    }, [appContainer.textProvider, matchingStrategyFactory])
+    }, [appContainer, matchingStrategyFactory])
 
 
     useEffect(() => {
         if (textMatchingStrategy) {
             const matchIndex = textMatchingStrategy.check(inputText)
+
+            if(matchIndex !== inputText.length){
+
+                return
+            }
             setErrorText(inputText.substring(matchIndex, inputText.length))
             setProgress(matchIndex)
         }

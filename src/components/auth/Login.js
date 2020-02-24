@@ -13,7 +13,6 @@ const Login = ({appContainer}) => {
         const result   = await userRepo.login(username)
         if (result.error) {
             setError(result.error)
-            return
         }
     }
 
@@ -22,9 +21,10 @@ const Login = ({appContainer}) => {
     }
 
     return (
-        <div>
+        <div className={'auth'}>
             <input type="text" onChange={onChange}/>
             <button onClick={login}>Login</button>
+            <a href={'/register'}> or Register</a>
             {error && <div style={{color: 'red'}}>{error}</div>}
         </div>
     )

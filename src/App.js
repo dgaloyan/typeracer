@@ -15,6 +15,7 @@ import Login                                             from './components/auth
 import PrivateRoute                                      from './commons/PrivateRoute'
 import Stats                                             from './components/stats/Stats'
 import PublicRoute                                       from './commons/PublicRoute'
+import './index.css'
 
 const timeFromUrl = new URL(window.location).searchParams.get('time')
 

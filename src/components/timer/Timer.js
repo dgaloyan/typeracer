@@ -21,12 +21,11 @@ const Timer = ({time, onFinish, start}) => {
             }
 
         }, 1000)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }
 
     useEffect(() => {
 
-        if (start) {
+        if (start && !stop) {
             startTimer()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

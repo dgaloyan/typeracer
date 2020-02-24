@@ -26,9 +26,10 @@ const Register = ({appContainer}) => {
     }
 
     return (
-        <div>
-            <input type="text" onChange={onChange}/>
+        <div className={'auth'}>
+            <input type="text" onChange={onChange} placeholder={'type your username'}/>
             <button onClick={register}>Register</button>
+            <a href={'/login'}> or Login</a>
             {error && <div style={{color: 'red'}}>{error}</div>}
         </div>
     )
