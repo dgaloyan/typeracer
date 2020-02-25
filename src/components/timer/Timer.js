@@ -1,14 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react'
-import {formatTime}                         from './formatTime'
+import React, {useCallback, useEffect, useRef, useState} from 'react'
+import {formatTime}                                      from './formatTime'
 import './styles.scss'
 
-const Timer = ({time, onFinish, start}) => {
+const Timer = ({time, onFinish, start, finished}) => {
 
     const [countdown, setCountdown] = useState(formatTime(time))
     const intervalId                = useRef(0)
     const timer                     = useRef(time)
 
-    const startTimer = () => {
+    const startTimer = useCallback(() => {
 
         intervalId.current = setInterval(() => {
             timer.current -= 1000
@@ -21,15 +21,31 @@ const Timer = ({time, onFinish, start}) => {
             }
 
         }, 1000)
-    }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [finished])
+
+    useEffect(() => {
+        setCountdown(formatTime(time))
+    }, [start, time])
+
+    useEffect(() => {
+        if (finished) {
+            clearInterval(intervalId.current)
+            onFinish(timer.current)
+            timer.current = time
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [finished])
+
 
     useEffect(() => {
 
-        if (start && !stop) {
+        if (start && !finished) {
             startTimer()
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [start])
+
+    }, [start, finished, startTimer])
 
     return (
         <div className={'timer'}>

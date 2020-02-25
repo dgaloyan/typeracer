@@ -19,9 +19,10 @@ const Board = ({appContainer}) => {
     const [inputText, setInputText]                       = useState('')
     const [stats, setStats]                               = useState([])
     const [finishTime, setFinishTime]                     = useState(null)
+    const [finished, setFinished]                         = useState(false)
 
     const matchingStrategyFactory = useCallback(appContainer.getMatchingStrategyFactory(), [])
-    const timeToComplete          = useCallback(appContainer.getTimeToComplete(), [])
+    const timeToComplete          = useCallback(appContainer.getTimeToComplete(), [finishTime])
 
 
     useEffect(() => {
@@ -38,17 +39,18 @@ const Board = ({appContainer}) => {
         if (textMatchingStrategy) {
             const matchIndex = textMatchingStrategy.check(inputText)
 
-            if(matchIndex !== inputText.length){
-
-                return
-            }
             setErrorText(inputText.substring(matchIndex, inputText.length))
             setProgress(matchIndex)
+
+            if (matchIndex === text.length) {
+                setFinished(true)
+            }
         }
-    }, [inputText, textMatchingStrategy])
+    }, [inputText, textMatchingStrategy, text.length])
 
 
     const generateReport = async () => {
+        setLoading(true)
         const analysers = appContainer.getAnalysers()
 
         const results = []
@@ -61,6 +63,7 @@ const Board = ({appContainer}) => {
         await appContainer.getStatsRepository().save(results)
 
         setStats([...results])
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -68,6 +71,7 @@ const Board = ({appContainer}) => {
             generateReport().then(r => {
             })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [finishTime])
 
 
@@ -83,6 +87,7 @@ const Board = ({appContainer}) => {
         setInputText('')
         setStats([])
         setFinishTime(null)
+        setFinished(false)
         setLoading(false)
     }
 
@@ -98,21 +103,20 @@ const Board = ({appContainer}) => {
 
     const onTimerFinish = (time) => {
         setDisabled(true)
-        setFinishTime(time)
+        setFinishTime(timeToComplete - time)
     }
 
-    const TimerMemo = useCallback(() =>
-        <Timer
-            time={timeToComplete}
-            start={isTimerStarted}
-            onFinish={onTimerFinish}/>, [isTimerStarted, timeToComplete])
 
     return (
         <div className={'board'}>
             Welcome to TypeRacer
             <Stats stats={stats}/>
             {stats.length > 0 && <button onClick={reset}>Play again</button>}
-            <TimerMemo/>
+            <Timer
+                time={timeToComplete}
+                start={isTimerStarted}
+                finished={finished}
+                onFinish={onTimerFinish}/>
             <Loader loading={loading}>
                 <div style={{opacity: errorText ? 1 : 0}} className={'textError'}>{errorText}</div>
                 <div className={'texts'}>
