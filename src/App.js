@@ -45,10 +45,9 @@ function App() {
         })
     }, [userRepository])
 
-    //const history = createBrowserHistory({ basename: '/your-base-name' });
 
     return (
-        <HashRouter>
+        <HashRouter basename={'/'}>
             <div className="App">
                 <header className="App-header">
                     Type Racer
