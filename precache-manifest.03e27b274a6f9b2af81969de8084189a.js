@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "18b8aedf47252f5057d4c538503926e2",
+    "revision": "a0569575bb26000fbcd9ca5e854d2506",
     "url": "/typeracer/index.html"
   },
   {
-    "revision": "a289d043bc8ede3c0756",
+    "revision": "5bb85f373f99dc556333",
     "url": "/typeracer/static/css/main.089214fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/typeracer/static/js/2.7dfcaee3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a289d043bc8ede3c0756",
-    "url": "/typeracer/static/js/main.eafb0a94.chunk.js"
+    "revision": "5bb85f373f99dc556333",
+    "url": "/typeracer/static/js/main.19b534ae.chunk.js"
   },
   {
     "revision": "9d2f1024a12b42efb584",
