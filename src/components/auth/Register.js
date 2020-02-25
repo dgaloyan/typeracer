@@ -1,6 +1,7 @@
 import React, {useState}  from 'react'
 import {useHistory}       from 'react-router'
 import {withAppContainer} from '../../withAppContainer'
+import {Link}             from 'react-router-dom'
 
 const Register = ({appContainer}) => {
 
@@ -29,7 +30,7 @@ const Register = ({appContainer}) => {
         <div className={'auth'}>
             <input type="text" onChange={onChange} placeholder={'type your username'}/>
             <button onClick={register}>Register</button>
-            <a href={'/login'}> or Login</a>
+            <Link to={'/login'}> or Login</Link>
             {error && <div style={{color: 'red'}}>{error}</div>}
         </div>
     )

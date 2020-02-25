@@ -1,5 +1,6 @@
 import React, {useState}  from 'react'
 import {withAppContainer} from '../../withAppContainer'
+import {Link}             from 'react-router-dom'
 
 const Login = ({appContainer}) => {
     const [username, setUsername] = useState(null)
@@ -24,7 +25,7 @@ const Login = ({appContainer}) => {
         <div className={'auth'}>
             <input type="text" onChange={onChange}/>
             <button onClick={login}>Login</button>
-            <a href={'/register'}> or Register</a>
+            <Link to={'/register'}> or Register</Link>
             {error && <div style={{color: 'red'}}>{error}</div>}
         </div>
     )
