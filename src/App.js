@@ -66,7 +66,7 @@ function App() {
                         ) : (
                             <>
                                 <li>
-                                    <Link to="/board">Board</Link>
+                                    <Link to="/board">Your Board</Link>
                                 </li>
                                 <li>
                                     <Link to="/stats">Stats</Link>
