@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/typeracer/static/css/main.089214fb.chunk.css",
-    "main.js": "/typeracer/static/js/main.2627537e.chunk.js",
-    "main.js.map": "/typeracer/static/js/main.2627537e.chunk.js.map",
+    "main.js": "/typeracer/static/js/main.8a18ec55.chunk.js",
+    "main.js.map": "/typeracer/static/js/main.8a18ec55.chunk.js.map",
     "runtime-main.js": "/typeracer/static/js/runtime-main.66db8764.js",
     "runtime-main.js.map": "/typeracer/static/js/runtime-main.66db8764.js.map",
     "static/js/2.c7237e13.chunk.js": "/typeracer/static/js/2.c7237e13.chunk.js",
     "static/js/2.c7237e13.chunk.js.map": "/typeracer/static/js/2.c7237e13.chunk.js.map",
     "index.html": "/typeracer/index.html",
-    "precache-manifest.507f3ee14cc5221864a4367773b64be5.js": "/typeracer/precache-manifest.507f3ee14cc5221864a4367773b64be5.js",
+    "precache-manifest.6d0a7f9ea5838d11d71fff6ee6b42e39.js": "/typeracer/precache-manifest.6d0a7f9ea5838d11d71fff6ee6b42e39.js",
     "service-worker.js": "/typeracer/service-worker.js",
     "static/css/main.089214fb.chunk.css.map": "/typeracer/static/css/main.089214fb.chunk.css.map",
     "static/js/2.c7237e13.chunk.js.LICENSE.txt": "/typeracer/static/js/2.c7237e13.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.66db8764.js",
     "static/js/2.c7237e13.chunk.js",
     "static/css/main.089214fb.chunk.css",
-    "static/js/main.2627537e.chunk.js"
+    "static/js/main.8a18ec55.chunk.js"
   ]
 }
