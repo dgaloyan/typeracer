@@ -47,7 +47,7 @@ function App() {
 
 
     return (
-        <HashRouter basename={'/#'}>
+        <HashRouter>
             <div className="App">
                 <header className="App-header">
                     Type Racer
